@@ -1,0 +1,20 @@
+Compressible Flow Calculator
+Copyright (C) 2018 Ariel Mordoch
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+--- Description ---
+This program was built to solve problems relating to compressible flow aerodynamics, specifically: isentropic flow with area change,
+normal and oblique shock analysis, and Prandtl-Meyer expansions. Currently, only a command line is supported, but I have interest in
+adding a GUI later. 
