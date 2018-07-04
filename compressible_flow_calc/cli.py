@@ -106,12 +106,13 @@ class CompressibleCLI:
             if table == 3:
                 # Some things must be modified for oblique shocks
                 print("M1 = %f\nM1n = %f\nM2n = %f\nM2 = %f" % (M1_real, M, M2, M2_real))
-                print("T2/T1 = %f\nrho2 / rho1 = %f\np2/p1 = %f\np02/p01 = %f" % (T2_T1, rho2_rho1, p2_p1, p02_p01))
-                print("rho02 / rho01 = %f\nA2*/A1* = %f\nv2/v1 = %f" % (rho02_rho01, A2star_A1star, v2_v1))
+                print("T2 / T1 = %f\nrho2 / rho1 = %f\np2 / p1 = %f\np02 / p01 = %f" % (T2_T1, rho2_rho1, p2_p1,
+                                                                                        p02_p01))
+                print("rho02 / rho01 = %f\nA2* / A1* = %f\nv2 / v1 = %f" % (rho02_rho01, A2star_A1star, v2_v1))
             else:
-                print("M2 = %f\nT2/T1 = %f\nrho2 / rho1 = %f\np2/p1 = %f\np02_p01 = %f" % (
+                print("M2 = %f\nT2 / T1 = %f\nrho2 / rho1 = %f\np2 / p1 = %f\np02 / p01 = %f" % (
                     M2, T2_T1, rho2_rho1, p2_p1, p02_p01))
-                print("p02/p1 = %f\nrho02 / rho01 = %f\nA2*/A1* = %f\nv2/v1 = %f" % (
+                print("p02 / p1 = %f\nrho02 / rho01 = %f\nA2* / A1* = %f\nv2 / v1 = %f" % (
                     p02_p1, rho02_rho01, A2star_A1star, v2_v1))
         elif table == 4:
             # Expansions
@@ -218,9 +219,9 @@ class CompressibleCLI:
         """
         need_args = confirm('Change iteration mach number range and accuracy (1<M<7, accuracy=1e-4) [y/N]? ')
         if need_args:
-            start_M = prompt('Enter lower bound for mach #:', expected=float)
-            end_M = prompt('Enter upper bound for mach #:', expected=float)
-            accuracy = prompt('Enter accuracy (ex. 1e-4)', expected=float)
+            start_M = prompt('Enter lower bound for mach #: ', expected=float)
+            end_M = prompt('Enter upper bound for mach #: ', expected=float)
+            accuracy = prompt('Enter accuracy (ex. 1e-4): ', expected=float)
             # Final element: step
             return [start_M, end_M, accuracy, accuracy * .1]
         else:

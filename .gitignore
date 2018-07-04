@@ -46,13 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Python files and venv directories and files
+# Python bytecode
 .pyd
 .pyc
-Include
-Lib
-Scripts
-pyvenv.cfg
 
-# PyCharm directory
+# PyCharm project directory
 /.idea

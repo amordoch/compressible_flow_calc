@@ -8,22 +8,22 @@ from .calc import *
 # Tuples of iteration functions
 ISENFUNCS = (AoverAstar, T0_over_T, p0_over_p,
              rho0_over_rho)
-SHOCKFUNCS = (p02_over_p1, T2overT1, p2_over_p1)
+SHOCKFUNCS = (p02_over_p01, T2overT1, p2_over_p1)
 EXPANSIONFUNCS = (nu)
 
 
 def iterate(correct_output, x, y, accuracy):
     """
-    -- Description --
     iterate() takes in a given function output [y] = [f(x)],
     a list of input values [x], and a list of output values [f(x)],
     and iterates through the list to find
     where the desired output occurs.
-    -- Parameters --
-    correct_output - desired function output
-    x - array of input values
-    y - array of output values
-    accuracy - desired percent error
+
+    :param correct_output: known correct function output (y value)
+    :param x: list of input values
+    :param y: list of output values
+    :param accuracy: desired percent error
+    :return: x value found, or None for no solution
     """
     accuracy = abs(accuracy)
     i = 0
@@ -39,7 +39,7 @@ def iterate(correct_output, x, y, accuracy):
 
 
 # Iteration over isentropic functions #
-def isentropic_iterate(gamma, func, correct_output, start_M=1, end_M=7, accuracy=1e-4, step=1e-5):
+def isentropic_iterate(gamma, func, correct_output, start_M=1, end_M=5, accuracy=1e-4, step=1e-5):
     """ Iterates over isentropic flow functions using input step size and accuracy """
     # Create mach num list
     # + 1 to include end_M as the final step
@@ -58,7 +58,7 @@ def isentropic_iterate(gamma, func, correct_output, start_M=1, end_M=7, accuracy
 
 
 # Iteration over normal shock functions #
-def shock_iterate(gamma, func, correct_output, startM=1, endM=7, accuracy=1e-4, step=1e-5):
+def shock_iterate(gamma, func, correct_output, startM=1, endM=5, accuracy=1e-4, step=1e-5):
     """ Iterates over normal shock functions using input step size and accuracy. Modeled after isentropic_iterate() """
     # Create mach num list
     # + 1 to include end_M as the final step
@@ -75,7 +75,7 @@ def shock_iterate(gamma, func, correct_output, startM=1, endM=7, accuracy=1e-4, 
 
 
 # Iteration over expansion functions #
-def expansion_iterate(gamma, func, correct_output, startM=1, endM=7, accuracy=1e-4, step=1e-5):
+def expansion_iterate(gamma, func, correct_output, startM=1, endM=5, accuracy=1e-4, step=1e-5):
     """ Iterates over nu(M, gamma) to find the mach number """
     # Create mach num list
     # + 1 to include end_M as the final step
