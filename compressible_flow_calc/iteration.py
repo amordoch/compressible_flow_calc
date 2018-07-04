@@ -6,10 +6,10 @@ from numpy import linspace
 from .calc import *
 
 # Tuples of iteration functions
-ISENFUNCS = (AoverAstar, T0_over_T, p0_over_p,
+_ISENFUNCS = (AoverAstar, T0_over_T, p0_over_p,
              rho0_over_rho)
-SHOCKFUNCS = (p02_over_p01, T2overT1, p2_over_p1)
-EXPANSIONFUNCS = (nu)
+_SHOCKFUNCS = (p02_over_p01, T2overT1, p2_over_p1)
+_EXPANSIONFUNCS = (nu)
 
 
 def iterate(correct_output, x, y, accuracy):

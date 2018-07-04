@@ -172,10 +172,10 @@ class CompressibleCLI:
         if result is not None:
             print('M = %f' % result)
         else:
-            print("No solution found within the specific interval")
+            print("No solution found within the specified interval")
 
     def shock_iter_wrapper(self):
-        """ Command line wrapper over iteration.shockIteratre() """
+        """ Command line wrapper over iteration.shock_iterate() """
         print("Select function to iterate over:")
         print("1: p02 / p01")
         print("2: T2 / T1")
@@ -193,7 +193,7 @@ class CompressibleCLI:
         if result is not None:
             print('M = %f' % result)
         else:
-            print("No solution found within the specific interval")
+            print("No solution found within the specified interval")
 
     def expansion_iter_wrapper(self):
         """ Command line wrapper over iteration.expansion_iterate() """
@@ -210,14 +210,14 @@ class CompressibleCLI:
         if result is not None:
             print('M = %f' % result)
         else:
-            print("No solution found within the specific interval")
+            print("No solution found within the specified interval")
 
     @staticmethod
     def mbound_err_prompt():
         """
         Prompts user for mach number bound, and accuracy
         """
-        need_args = confirm('Change iteration mach number range and accuracy (1<M<7, accuracy=1e-4) [y/N]? ')
+        need_args = confirm('Change iteration mach number range and accuracy (1<M<5, accuracy=1e-4) [y/N]? ')
         if need_args:
             start_M = prompt('Enter lower bound for mach #: ', expected=float)
             end_M = prompt('Enter upper bound for mach #: ', expected=float)
