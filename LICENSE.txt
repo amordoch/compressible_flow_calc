@@ -14,7 +14,5 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
---- Description ---
 This program was built to solve problems relating to compressible flow aerodynamics, specifically: isentropic flow with area change,
-normal and oblique shock analysis, and Prandtl-Meyer expansions. Currently, only a command line is supported, but I have interest in
-adding a GUI later. 
+normal and oblique shock analysis, and Prandtl-Meyer expansions.
