@@ -6,9 +6,9 @@ from numpy import linspace
 from .calc import *
 
 # Tuples of iteration functions
-_ISENFUNCS = (AoverAstar, T0_over_T, p0_over_p,
-             rho0_over_rho)
-_SHOCKFUNCS = (p02_over_p01, T2overT1, p2_over_p1)
+_ISENFUNCS = (A_over_Astar, T0_over_T, p0_over_p,
+              rho0_over_rho)
+_SHOCKFUNCS = (p02_over_p01, T2_over_T1, p2_over_p1)
 _EXPANSIONFUNCS = (nu)
 
 
@@ -19,10 +19,10 @@ def iterate(correct_output, x, y, accuracy):
     and iterates through the list to find
     where the desired output occurs.
 
-    :param correct_output: known correct function output (y value)
-    :param x: list of input values
-    :param y: list of output values
-    :param accuracy: desired percent error
+    :param float correct_output: known correct function output (y value)
+    :param list x: list of input values
+    :param list y: list of output values
+    :param float accuracy: desired percent error
     :return: x value found, or None for no solution
     """
     accuracy = abs(accuracy)
@@ -44,7 +44,7 @@ def isentropic_iterate(gamma, func, correct_output, start_M=1, end_M=5, accuracy
     # Create mach num list
     # + 1 to include end_M as the final step
     mach_nums = list(linspace(start_M, end_M, (end_M - start_M) / step + 1))
-    func = ISENFUNCS[func]
+    func = _ISENFUNCS[func]
     # Generate list of the function's outputs
     # Code will break if all functions do not take uniform inputs
     outputs = [func(M, gamma) for M in mach_nums]
@@ -63,7 +63,7 @@ def shock_iterate(gamma, func, correct_output, startM=1, endM=5, accuracy=1e-4, 
     # Create mach num list
     # + 1 to include end_M as the final step
     mach_nums = list(linspace(startM, endM, (endM - startM) / step + 1))
-    func = SHOCKFUNCS[func]
+    func = _SHOCKFUNCS[func]
     # Generate list of outputs of given function and iterate
     outputs = [func(M1, M2(M1, gamma), gamma) for M1 in mach_nums]
     found_M = iterate(correct_output, mach_nums, outputs, accuracy)
@@ -80,7 +80,7 @@ def expansion_iterate(gamma, func, correct_output, startM=1, endM=5, accuracy=1e
     # Create mach num list
     # + 1 to include end_M as the final step
     mach_nums = list(linspace(startM, endM, (endM - startM) / step + 1))
-    func = EXPANSIONFUNCS[func]  # just calc.nu() for now
+    func = _EXPANSIONFUNCS[func]  # just calc.nu() for now
     # Generate list of nu values and iterate
     nu_vals = [func(M, gamma) for M in mach_nums]
     found_M = iterate(correct_output, mach_nums, nu_vals, accuracy)

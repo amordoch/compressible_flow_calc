@@ -2,6 +2,7 @@
 # By Ariel Mordoch, distributed under GNU GPL
 import math
 from compressible_flow_calc import iteration, calc
+from compressible_flow_calc import __CFCVERSION__
 
 
 def prompt(text='?>', expected=str, default=None):
@@ -51,8 +52,8 @@ class CompressibleCLI:
 
     def start(self):
         # Intro
-        print("Compressible Flow Calculator 1.0")
-        print("By Ariel Mordoch")
+        print("Compressible Flow Calculator " + __CFCVERSION__)
+        print("Copyright (C) 2018 Ariel Mordoch - see LICENSE for full license details.")
         self.__gamma = prompt("Enter a value for gamma (leave blank for 1.4): ", float, 1.4)
         # Start Looping
         loop = True
@@ -74,7 +75,7 @@ class CompressibleCLI:
     def print_row(self, table, M):
         if table == 1:
             # Isentropic print
-            A_As = calc.AoverAstar(M, self.__gamma)
+            A_As = calc.A_over_Astar(M, self.__gamma)
             T0_T = calc.T0_over_T(M, self.__gamma)
             p0_p = calc.p0_over_p(M, self.__gamma)
             rho0_rho = calc.rho0_over_rho(M, self.__gamma)
@@ -95,14 +96,14 @@ class CompressibleCLI:
             else:
                 M2 = calc.M2(M, self.__gamma)
 
-            T2_T1 = calc.T2overT1(M, M2, self.__gamma)
+            T2_T1 = calc.T2_over_T1(M, M2, self.__gamma)
             rho2_rho1 = calc.rho2_over_rho1(M, M2, self.__gamma)
             p2_p1 = calc.p2_over_p1(M, M2, self.__gamma)
             p02_p01 = calc.p02_over_p01(M, M2, self.__gamma)
             p02_p1 = calc.p02_over_p1(M, M2, self.__gamma)
             rho02_rho01 = calc.rho02_over_rho01(M, M2, self.__gamma)
             A2star_A1star = calc.A2star_over_A1star(M, M2, self.__gamma)
-            v2_v1 = calc.v2overv1(M, M2, self.__gamma)
+            v2_v1 = calc.v2_over_v1(M, M2, self.__gamma)
             if table == 3:
                 # Some things must be modified for oblique shocks
                 print("M1 = %f\nM1n = %f\nM2n = %f\nM2 = %f" % (M1_real, M, M2, M2_real))
@@ -215,7 +216,9 @@ class CompressibleCLI:
     @staticmethod
     def mbound_err_prompt():
         """
-        Prompts user for mach number bound, and accuracy
+        Prompts user for mach number bound and desired calculation accuracy. Intended for use with iterations
+        :return: a list [lower M bound, upper M bound, accuracy, step (accuracy*.1)] or None if user does not want to
+        change options
         """
         need_args = confirm('Change iteration mach number range and accuracy (1<M<5, accuracy=1e-4) [y/N]? ')
         if need_args:

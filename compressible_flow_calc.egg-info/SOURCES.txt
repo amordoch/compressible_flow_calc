@@ -1,5 +1,6 @@
 setup.py
 compressible_flow_calc/__init__.py
+compressible_flow_calc/__main__.py
 compressible_flow_calc/calc.py
 compressible_flow_calc/cli.py
 compressible_flow_calc/iteration.py

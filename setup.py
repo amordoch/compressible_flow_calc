@@ -1,8 +1,9 @@
 from setuptools import setup
+from compressible_flow_calc import __CFCVERSION__
 
 setup(
     name='compressible_flow_calc',
-    version='0.1',
+    version=__CFCVERSION__,
     packages=['compressible_flow_calc'],
     install_requires=['numpy'],
     url='',

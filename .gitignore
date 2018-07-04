@@ -46,9 +46,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Python bytecode
+# Python bytecode / setuptools build directory
 .pyd
 .pyc
+build
 
-# PyCharm project directory
+# PyCharm project meta
 /.idea
