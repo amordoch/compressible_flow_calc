@@ -17,7 +17,7 @@ or the wheel/tarball directly out of `dist/` and run the following
 in your terminal:
 - If you downloaded the wheel:
 
-  `pip install compressible_flow_calc-0.1-py3-non-any.whl` 
+  `pip install compressible_flow_calc-0.1-py3-none-any.whl` 
  - If you downloaded the tarball:
  
    `pip install compressible_flow_calc-0.1.tar.gz`
