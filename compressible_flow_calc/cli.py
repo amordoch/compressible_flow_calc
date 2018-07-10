@@ -85,32 +85,27 @@ class CompressibleCLI:
             if table == 3:
                 theta = prompt("Enter turning angle (deg): ", expected=float) * math.pi / 180
                 alpha = prompt("For a strong oblique shock, enter 0: ", default=1)
-                if alpha == "0":
-                    beta = calc.beta(M, self.__gamma, theta, 0)
-                else:
-                    beta = calc.beta(M, self.__gamma, theta)
-                M1_real = M
-                M = M * math.sin(beta) # M1n
-                M2 = calc.M2(M, self.__gamma)  # M2n
-                M2_real = M2 / math.sin(beta - theta)  # M2
+                props = calc.oblique_shock_final(M, theta, self.__gamma, alpha)
             else:
-                M2 = calc.M2(M, self.__gamma)
-
-            T2_T1 = calc.T2_over_T1(M, M2, self.__gamma)
-            rho2_rho1 = calc.rho2_over_rho1(M, M2, self.__gamma)
-            p2_p1 = calc.p2_over_p1(M, M2, self.__gamma)
-            p02_p01 = calc.p02_over_p01(M, M2, self.__gamma)
-            p02_p1 = calc.p02_over_p1(M, M2, self.__gamma)
-            rho02_rho01 = calc.rho02_over_rho01(M, M2, self.__gamma)
-            A2star_A1star = calc.A2star_over_A1star(M, M2, self.__gamma)
-            v2_v1 = calc.v2_over_v1(M, M2, self.__gamma)
+                props = calc.normal_shock_final(M, self.__gamma)
+            M2 = props['M2']
+            T2_T1 = props['T2_T1']
+            rho2_rho1 = props['rho2_rho1']
+            p2_p1 = props['p2_p1']
+            p02_p01 = props['p02_p01']
+            rho02_rho01 = props['rho02_rho01']
+            A2star_A1star = props['A2star_A1star']
+            v2_v1 = props['v2_v1']
             if table == 3:
                 # Some things must be modified for oblique shocks
-                print("M1 = %f\nM1n = %f\nM2n = %f\nM2 = %f" % (M1_real, M, M2, M2_real))
+                M1n = props['M1n']
+                M2n = props['M2n']
+                print("M1 = %f\nM1n = %f\nM2n = %f\nM2 = %f" % (M, M1n, M2n, M2))
                 print("T2 / T1 = %f\nrho2 / rho1 = %f\np2 / p1 = %f\np02 / p01 = %f" % (T2_T1, rho2_rho1, p2_p1,
                                                                                         p02_p01))
                 print("rho02 / rho01 = %f\nA2* / A1* = %f\nv2 / v1 = %f" % (rho02_rho01, A2star_A1star, v2_v1))
             else:
+                p02_p1 = props['p02_p1']
                 print("M2 = %f\nT2 / T1 = %f\nrho2 / rho1 = %f\np2 / p1 = %f\np02 / p01 = %f" % (
                     M2, T2_T1, rho2_rho1, p2_p1, p02_p01))
                 print("p02 / p1 = %f\nrho02 / rho01 = %f\nA2* / A1* = %f\nv2 / v1 = %f" % (
