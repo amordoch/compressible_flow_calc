@@ -2,7 +2,7 @@ Compressible Flow Calculator (CFC)
 
 Copyright (C) 2018 Ariel Mordoch
 
-See LICENSE for license details
+Licensed under the GPLv3, for more details see LICENSE
 ## What is this?
 This Python program was built to solve problems related to compressible flow aerodynamics, specifically: isentropic flow
 with area change, normal and oblique shock analysis, and Prandtl-Meyer expansion fans. 

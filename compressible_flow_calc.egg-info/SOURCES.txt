@@ -4,6 +4,8 @@ compressible_flow_calc/__main__.py
 compressible_flow_calc/calc.py
 compressible_flow_calc/cli.py
 compressible_flow_calc/iteration.py
+compressible_flow_calc/solve.py
+compressible_flow_calc/util.py
 compressible_flow_calc.egg-info/PKG-INFO
 compressible_flow_calc.egg-info/SOURCES.txt
 compressible_flow_calc.egg-info/dependency_links.txt
