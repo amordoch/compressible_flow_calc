@@ -50,6 +50,8 @@ Temporary Items
 .pyd
 .pyc
 build
+venv/
 
 # PyCharm project meta
-/.idea
+.idea/
+.vscode/
